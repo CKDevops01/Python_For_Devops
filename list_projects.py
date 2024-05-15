@@ -6,9 +6,9 @@ import json
 
 url = "https://chaitanyakharche51.atlassian.net/rest/api/3/project"
 
-API_TOKEN=""
+API_TOKEN="enter api-token"
 
-auth = HTTPBasicAuth("", API_TOKEN)
+auth = HTTPBasicAuth("enter valid emailid of jira account", API_TOKEN)
 
 headers = {
   "Accept": "application/json"
@@ -21,8 +21,10 @@ response = requests.request(
    auth=auth
 )
 
+#output = json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": "))
 output = json.loads(response.text)
+for i in range(len(output)):
 
-name = output[0]["name"]
+  name = output[i]["name"]
 
-print(name)
+  print(name)
